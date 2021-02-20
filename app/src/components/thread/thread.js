@@ -33,6 +33,7 @@ function Chat(props) {
                 <Typography variant="h5" className="header-message">{props.thread}</Typography>
             </Grid>
         </Grid>
+        <Grid container>
             <Grid item xs={12} >
                 <List className={classes.messageArea}>
                     {props.messages.map((message, index) => (
@@ -59,6 +60,7 @@ function Chat(props) {
                     </Grid>
                 </Grid>
             </Grid>
+        </Grid>
       </div>
   );
 }
