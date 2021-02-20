@@ -80,10 +80,12 @@ app.get("/userprofile", isLoggedIn, (req, res) => {
 app.get("/research", (req, res) => {
   res.render("research");
 });
+
 //Auth Routes
 app.get("/login", (req, res) => {
   res.render("login");
 });
+
 app.post(
   "/login",
   passport.authenticate("local", {
@@ -96,8 +98,7 @@ app.post(
 app.post("/message", (req, res) => {
   var messageData = {
     message: req.body.message,
-    username: req.body.username,
-    anonymous: req.bodyisAnonymous
+    username: req.body.username
   }
 new Message(userData).save();
 res.redirect("/userprofile");
