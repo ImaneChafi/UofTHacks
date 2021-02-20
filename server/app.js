@@ -69,7 +69,7 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 app.get("/school", (req, res) => {
-  res.render("userprofile");
+  res.render("userprofile", {quotes: result});
 });
 app.get("/games", (req, res) => {
   res.render("games");
