@@ -6,6 +6,7 @@ const mongoose = require("mongoose"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose"),
   User = require("./models/user");
+  Messages = require("./models/message");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const bodyParser = require("body-parser"); // middleware
@@ -91,6 +92,23 @@ app.post(
   }),
   function (req, res) {}
 );
+
+app.post("/message", (req, res) => {
+  var messageData = {
+    message: req.body.message,
+    username: req.body.username,
+    anonymous: req.bodyisAnonymous
+  }
+new Message(userData).save();
+res.redirect("/userprofile");
+})
+
+app.get('/', (req, res) => {
+  const cursor = db.collection('quotes').find()
+  console.log(cursor)
+  // ...
+})
+
 app.get("/register", (req, res) => {
   res.render("register");
 });

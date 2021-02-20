@@ -895,6 +895,24 @@ Enjoy <3
       <div class="post-blocks">
           <div class="post-block">
               <div class="post-top-bar">
+                <form method="post" action="/message">
+                  <div class='fieldset-body' id='login_form' >
+                    <button onclick="openLoginInfo();" class='b b-form i i-more' title='Info'></button>
+                    <p class='field'>
+                      <label for='user'>Message</label>
+                      <input type='text' id='user' name='message' title='Username' />
+                      <span id='valida' class='i i-warning'></span>
+                    <p class='field' hidden>
+                      <input type='text' id='user' name='username' title='Username' />
+                      <span id='valida' class='i i-warning'></span>
+                    </p>
+                    
+                    <label class='checkbox'>
+                      <input type='checkbox' name="isAnonymous" value='TRUE' title='Keep me Signed in' /> Anonymous?
+                    </label>
+            
+                    <input type='submit' id='do_login' value='POST!' title='Get Started' />
+                 </form>
               <p class="post-title">
                   Posted by <a class="title-dev" href="#">dlirA01</a>
                   <svg class="titleuname-verified" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350.03 1326.16">
