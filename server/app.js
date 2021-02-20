@@ -69,13 +69,21 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 app.get("/school", (req, res) => {
-  res.render("userprofile", {quotes: result});
+  db.collection('quotes').find().toArray()
+  .then(results => {
+    res.render('userprofile.ejs', { quotes: results })
+  })
+  .catch(/* ... */)
 });
 app.get("/games", (req, res) => {
   res.render("games");
 });
 app.get("/userprofile", isLoggedIn, (req, res) => {
-  res.render("userprofile");
+  db.collection('quotes').find().toArray()
+  .then(results => {
+    res.render('userprofile.ejs', { quotes: results })
+  })
+  .catch(/* ... */)
 });
 app.get("/research", (req, res) => {
   res.render("research");
