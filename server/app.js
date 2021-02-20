@@ -66,6 +66,12 @@ app.use(passport.session());
 app.get("/", (req,res) =>{
   res.render("home");
 })
+app.get("/school", (req,res) =>{
+  res.render("userprofile");
+})
+app.get("/games", (req,res) =>{
+  res.render("games");
+})
 app.get("/userprofile",isLoggedIn ,(req,res) =>{
   res.render("userprofile");
 })
