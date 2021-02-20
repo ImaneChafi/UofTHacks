@@ -76,6 +76,9 @@ app.get("/games", (req, res) => {
 app.get("/userprofile", isLoggedIn, (req, res) => {
   res.render("userprofile");
 });
+app.get("/research", (req, res) => {
+  res.render("research");
+});
 //Auth Routes
 app.get("/login", (req, res) => {
   res.render("login");
@@ -120,10 +123,6 @@ function isLoggedIn(req, res, next) {
   }
   res.redirect("/login");
 }
-
-app.get("/research", (req, res) => {
-  res.render("research");
-});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
