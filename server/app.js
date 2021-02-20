@@ -6,7 +6,7 @@ const mongoose = require("mongoose"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose"),
   User = require("./models/user");
-  Messages = require("./models/message");
+  Messages = require("./models/quotes");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const bodyParser = require("body-parser"); // middleware
@@ -95,13 +95,14 @@ app.post(
   function (req, res) {}
 );
 
-app.post("/message", (req, res) => {
-  var messageData = {
-    message: req.body.message,
-    username: req.body.username
-  }
-new Message(userData).save();
-res.redirect("/userprofile");
+app.post('/message', function(req, res) {
+  db.collection('quotes').insertOne(req.body, (err, result) => {
+      if (err) return console.log(err)
+  
+      console.log('saved to database')
+      res.redirect('/userprofile')
+      
+    })
 })
 
 app.get('/', (req, res) => {
