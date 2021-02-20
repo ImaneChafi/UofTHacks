@@ -7,14 +7,9 @@ const
       LocalStrategy         =  require("passport-local"),
       passportLocalMongoose =  require("passport-local-mongoose"),
       User                  =  require("./models/user");
-
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser'); // middleware
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -30,7 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //Mongodb setup
-
 require('dotenv').config()
 mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://Imane:hellogovnor@cluster0-cxkrq.mongodb.net/test?retryWrites=true&w=majority');
 const MongoClient = require('mongodb').MongoClient
@@ -44,6 +38,7 @@ MongoClient.connect('mongodb+srv://Imane:hellogovnor@cluster0-cxkrq.mongodb.net/
   })
 })
 
+//Initializing the view engine with ejs
 app.set("view engine","ejs");
 
 app.use(require("express-session")({
@@ -60,6 +55,7 @@ app.use(bodyParser.urlencoded(
 ))
 app.use(passport.initialize());
 app.use(passport.session());
+
 //=======================
 //      R O U T E S
 //=======================
