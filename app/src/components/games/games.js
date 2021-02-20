@@ -4,37 +4,34 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import SettingsIcon from '@material-ui/icons/Settings'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Navigation from '../navigation/navigation.js'
+import GamesGrid from './gamesGrid.js'
 
-function sideBarComponent() {
+function SideBarComponent(props) {
   return (
-    <>
-      <AccountCircle/> 
       <List>
           {/** Show a list of all friends */}
-          {['General', 'Settings', 'Log Out'].map((text, index) => (
+          {props.user.friends.map((text, index) => (
           <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <ExitToAppIcon /> : <SettingsIcon />}</ListItemIcon>
               <ListItemText primary={text} />
           </ListItem>
           ))}
       </List>
-    </>
   )
 }
 
 function mainComponent() {
   {/** Show all games in a grid */}
   return (
-    <p>This a Games ting u no</p>
+    <GamesGrid/>
   )
 }
 
 
-function Games() {
+function Games(props) {
     return (
         <div className="wrapper">
           <Navigation
-            sideBarComponent={sideBarComponent()}
+            sideBarComponent={SideBarComponent(props)}
             mainComponent={mainComponent()}
           />
         </div>
