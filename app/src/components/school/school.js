@@ -10,9 +10,11 @@ function sideBarComponent() {
     <>
       <AccountCircle/> 
       <List>
+        {/** Add a list of classes and their threads (as well as personal threads?)
+        The buttons should change what shows up in the main component 
+        */}
           {['General', 'Settings', 'Log Out'].map((text, index) => (
           <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <ExitToAppIcon /> : <SettingsIcon />}</ListItemIcon>
               <ListItemText primary={text} />
           </ListItem>
           ))}
@@ -22,13 +24,14 @@ function sideBarComponent() {
 }
 
 function mainComponent() {
+  {/** Create the layout and how to show the thread */}
   return (
-    <p>This a profile ting u no</p>
+    <p>This a schools ting u no</p>
   )
 }
 
 
-function Profile() {
+function School() {
     return (
         <div className="wrapper">
           <Navigation
@@ -39,4 +42,4 @@ function Profile() {
     )
 }
 
-export default Profile;
+export default School;

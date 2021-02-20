@@ -10,6 +10,7 @@ function sideBarComponent() {
     <>
       <AccountCircle/> 
       <List>
+          {/** Show a list of all friends */}
           {['General', 'Settings', 'Log Out'].map((text, index) => (
           <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <ExitToAppIcon /> : <SettingsIcon />}</ListItemIcon>
@@ -22,13 +23,14 @@ function sideBarComponent() {
 }
 
 function mainComponent() {
+  {/** Show all games in a grid */}
   return (
-    <p>This a profile ting u no</p>
+    <p>This a Games ting u no</p>
   )
 }
 
 
-function Profile() {
+function Games() {
     return (
         <div className="wrapper">
           <Navigation
@@ -39,4 +41,4 @@ function Profile() {
     )
 }
 
-export default Profile;
+export default Games;

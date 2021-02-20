@@ -10,6 +10,7 @@ function sideBarComponent() {
     <>
       <AccountCircle/> 
       <List>
+          {/** Add all the feeds that this student follows */}
           {['General', 'Settings', 'Log Out'].map((text, index) => (
           <ListItem button key={text}>
               <ListItemIcon>{index % 2 === 0 ? <ExitToAppIcon /> : <SettingsIcon />}</ListItemIcon>
@@ -22,13 +23,14 @@ function sideBarComponent() {
 }
 
 function mainComponent() {
+  {/**  Create layout for the feed and how it will be shown*/}
   return (
-    <p>This a profile ting u no</p>
+    <p>This a feed ting u no</p>
   )
 }
 
 
-function Profile() {
+function Feed() {
     return (
         <div className="wrapper">
           <Navigation
@@ -39,4 +41,4 @@ function Profile() {
     )
 }
 
-export default Profile;
+export default Feed;
