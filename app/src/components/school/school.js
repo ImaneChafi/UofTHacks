@@ -4,7 +4,6 @@ import Navigation from '../navigation/navigation.js'
 import Thread from '../thread/thread.js'
 
 function SideBarComponent(props) {
-  console.log(props)
   return (
       <List>
         {/** Add a list of classes and their threads (as well as personal threads?)
@@ -38,7 +37,8 @@ function School(props) {
     return (
         <div className="wrapper">
           <Navigation
-            sideBarComponent={<SideBarComponent
+            sideBarComponent={
+            <SideBarComponent
               user={props.user}
               setThread={setThread}
             />}

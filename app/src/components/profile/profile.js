@@ -23,7 +23,7 @@ function sideBarComponent() {
 
 function mainComponent() {
   return (
-    <p>This a profile ting u no</p>
+    <p>This is for the profile stuff</p>
   )
 }
 

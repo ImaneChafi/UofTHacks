@@ -1,43 +1,29 @@
+import { CardContent } from '@material-ui/core'
 import React, { useState } from 'react'
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import SettingsIcon from '@material-ui/icons/Settings'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import Navigation from '../navigation/navigation.js'
-
-function sideBarComponent() {
-  return (
-    <>
-      <AccountCircle/> 
-      <List>
-          {/** Add all the feeds that this student follows */}
-          {['General', 'Settings', 'Log Out'].map((text, index) => (
-          <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <ExitToAppIcon /> : <SettingsIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-          </ListItem>
-          ))}
-      </List>
-    </>
-  )
-}
-
-function mainComponent() {
-  {/**  Create layout for the feed and how it will be shown*/}
-  return (
-    <p>This a feed ting u no</p>
-  )
-}
-
+import {Card, Typography, Switch, FormControlLabel} from '@material-ui/core'
 
 function Feed() {
+    const [showComments, setShowComments] = useState(false);
     return (
-        <div className="wrapper">
-          <Navigation
-            sideBarComponent={sideBarComponent()}
-            mainComponent={mainComponent()}
-          />
-        </div>
+        <>
+            <Card>
+                <CardContent>
+                    <Typography component="h4" className='postTitle' align="left">Post Title</Typography>
+                    <Typography component="p" className='postContent' align="left">Post Content</Typography>
+                </CardContent>
+                <FormControlLabel
+                    control={
+                    <Switch
+                        checked={showComments}
+                        onChange={() => setShowComments(!showComments)}
+                        name="checkedB"
+                        color="primary"
+                    />
+                    }
+                    label="Show Comments"
+                />
+            </Card>
+        </>
     )
 }
 

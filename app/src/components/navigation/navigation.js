@@ -113,7 +113,7 @@ const Navigation = ({ sideBarComponent, mainComponent }) => {
                     School
                 </Button>
                 <Button className={classes.navButton} onClick={() => history.push("/feed")}>
-                    Research
+                    Opportunities
                 </Button>
                 <Button className={classes.navButton} onClick={() => history.push("/games")}>
                     Games
