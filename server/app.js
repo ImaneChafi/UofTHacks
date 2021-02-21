@@ -105,17 +105,14 @@ app.get("/threads", (req, res) => {
 
 //GET Check if user logged in and list posts as quotes
 app.get("/userprofile", isLoggedIn, (req, res) => {
-  db.collection('quotes').find().toArray()
-  .then(results => {
-    res.render('userprofile.ejs', { posts: results })
-  })
-  .catch(/* ... */)
+  res.render("userprofile");
 });
 
 //GET research
 app.get("/research", (req, res) => {
   res.render("research");
 });
+
 
 //GET login
 app.get("/login", (req, res) => {
