@@ -155,13 +155,6 @@ app.post('/thread', function(req, res) {
     })
 })
 
-//GET getting the posts test
-app.get('/', (req, res) => {
-  const cursor = db.collection('posts').find()
-  console.log(cursor)
-  // ...
-})
-
 //GET register
 app.get("/register", (req, res) => {
   res.render("register");
@@ -200,6 +193,12 @@ function isLoggedIn(req, res, next) {
   res.redirect("/login");
 }
 
+app.post("/login",passport.authenticate("local",{
+  successRedirect:"/userprofile",
+  failureRedirect:"/login"
+}),function (req, res){
+});
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
@@ -217,5 +216,5 @@ app.use(function (err, req, res, next) {
 });
 app.set("view engine", "ejs");
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3030;
 app.listen(port);
