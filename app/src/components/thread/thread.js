@@ -36,7 +36,7 @@ function Chat(props) {
         <Grid container>
             <Grid item xs={12} >
                 <List className={classes.messageArea}>
-                    {props.messages.map((message, index) => (
+                    {props.messages[props.thread].map((message, index) => (
                         <ListItem key={index}>
                         <Grid container>
                             <Grid item xs={12}>

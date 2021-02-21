@@ -10,9 +10,9 @@ function SideBarComponent(props) {
   return (
       <List>
           {/** Show a list of all friends */}
-          {props.user.friends.map((text, index) => (
-          <ListItem button key={text}>
-              <ListItemText primary={text} />
+          {props.user.Friends.map((friend, index) => (
+          <ListItem button key={index}>
+              <ListItemText primary={friend.fname + " " + friend.lname} />
           </ListItem>
           ))}
       </List>
@@ -20,7 +20,6 @@ function SideBarComponent(props) {
 }
 
 function mainComponent() {
-  {/** Show all games in a grid */}
   return (
     <GamesGrid/>
   )

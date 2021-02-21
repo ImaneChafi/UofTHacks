@@ -1,29 +1,38 @@
-import { CardContent } from '@material-ui/core'
+import { CardContent, CardMedia } from '@material-ui/core'
 import React, { useState } from 'react'
-import {Card, Typography, Switch, FormControlLabel} from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles';
+import {Card, Typography, Button, List, ListItem} from '@material-ui/core'
 
-function Feed() {
-    const [showComments, setShowComments] = useState(false);
+const useStyles = makeStyles({
+    list: {
+      height: '70vh',
+      overflowY: 'auto'
+    },
+    card: {
+        width: "60vw",
+        margin: "auto"
+    }
+  });
+
+function Feed(props) {
+    const classes = useStyles();
     return (
-        <>
-            <Card>
-                <CardContent>
-                    <Typography component="h4" className='postTitle' align="left">Post Title</Typography>
-                    <Typography component="p" className='postContent' align="left">Post Content</Typography>
-                </CardContent>
-                <FormControlLabel
-                    control={
-                    <Switch
-                        checked={showComments}
-                        onChange={() => setShowComments(!showComments)}
-                        name="checkedB"
-                        color="primary"
-                    />
-                    }
-                    label="Show Comments"
-                />
-            </Card>
-        </>
+        <List className={classes.list}>
+            <ListItem>
+                <Typography>{props.feed + " Posts"}</Typography>
+            </ListItem>
+            {props.posts[props.feed].map((post, index) => (
+                <ListItem key={index}>
+                    <Card className={classes.card}>
+                        <CardContent>
+                            <Typography variant="h4" className='postTitle' align="left" style={{marginBottom: "20px"}}>{post.title}</Typography>
+                            <CardMedia></CardMedia>
+                            <Typography variant="p" className='postContent' align="left">{post.content}</Typography>
+                        </CardContent>
+                    </Card>
+                </ListItem>
+            ))}
+        </List>
     )
 }
 

@@ -9,21 +9,16 @@ import './App.css';
 
 
 function App() {
-  const [login, setLogin] = useState(true)
-
-  const student = {
-    name: "Kyoji",
-    lastName: "Goto",
-    friends: ["Imane", "Paul"],
-    classes: ["CSC369", "CSC301", "CSC318", "CSC384", "CSC373", "ANT100"],
-    school: "UofT",
-    feeds: ["Research", "Events", "Clubs"]
-  }
+  const [login, setLogin] = useState(false)
+  const [user, setUser] = useState(null)
   
   if (!login) {
     return (
       <div className="App">
-        <Login />
+        <Login 
+          setLogin={setLogin}
+          setUser={setUser}
+        />
       </div>
     )
   }
@@ -31,10 +26,10 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' render={() => <School user={student} />} />
-          <Route exact path='/feed' render={() => <Opportunities user={student}/>} />
-          <Route exact path='/games' render={() => <Games user={student}/>} />
-          <Route exact path='/profile' render={() => <Profile user={student}/>} />
+          <Route exact path='/' render={() => <School user={user} />} />
+          <Route exact path='/feed' render={() => <Opportunities user={user}/>} />
+          <Route exact path='/games' render={() => <Games user={user}/>} />
+          <Route exact path='/profile' render={() => <Profile user={user}/>} />
         </Switch>
       </BrowserRouter>
     </div>

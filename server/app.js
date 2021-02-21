@@ -212,11 +212,10 @@ function isLoggedIn(req, res, next) {
 
 app.post(
   "/login",
-  passport.authenticate("local", {
-    successRedirect: "/userprofile",
-    failureRedirect: "/login",
-  }),
-  function (req, res) {}
+  passport.authenticate("local"),
+  function (req, res) {
+    res.status(200).send(req.user)
+  }
 );
 
 // catch 404 and forward to error handler

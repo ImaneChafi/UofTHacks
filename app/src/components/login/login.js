@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography"
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select'
 import { FormControl, InputLabel, makeStyles } from '@material-ui/core'
+import { login } from '../../Actions/login'
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -36,9 +37,23 @@ const useStyles = makeStyles((theme) => ({
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
+    loginCard: {
+        margin: "10px",
+        width: "20%",
+        minWidth: "350px",
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        marginRight: "-50%",
+        transform: "translate(-50%, -50%)"
+    }
   }));
 
-function Login() {
+function handleLogin(email, password, setUser, setLogin) {
+    login(email, password, setUser, setLogin);
+}
+
+function Login(props) {
     const classes = useStyles();
     const [value, setValue] = useState(0);
     const [email, setEmail] = useState("");
@@ -53,7 +68,7 @@ function Login() {
 
     return (
         <div className="Wrapper">
-            <Card className="loginCard">
+            <Card className={classes.loginCard}>
                 <Tabs value={value} onChange={(e, newValue) => setValue(newValue)} aria-label="simple tabs example" centered>
                         <Tab label="Log In" />
                         <Tab label="Register" />
@@ -81,14 +96,14 @@ function Login() {
                                 autoComplete="current-password"
                                 fullWidth
                                 onChange={(e) => setPassword(e.target.value)}
-                                // onKeyPress={this.handleEnterLogin}
+                                // onKeyPress={() => handleLogin(email, password, props.setUser, props.setLogin)}
                             />
                             <Typography variant="body2" component="p">
                                 {/* {this.state.signin_error} */}
                             </Typography>
                         </CardContent>
                         <CardActions>
-                            <Button className="Signin" size="small" color="primary">
+                            <Button className="Signin" size="small" color="primary" onClick={() => handleLogin(email, password, props.setUser, props.setLogin)}>
                                 Sign In
                             </Button>
                         </CardActions>
@@ -117,7 +132,7 @@ function Login() {
                                 fullWidth
                                 onChange={(e) => setRegisterLastName(e.target.value)}
                             />
-                            <FormControl className={classes.formControl}>
+                            <FormControl className={classes.formControl} style={{float: "left"}}>
                             <InputLabel>Pronouns</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -166,8 +181,8 @@ function Login() {
                                 {/* {this.state.signup_error ? this.state.signup_error : this.state.signup_success} */}
                             </p>
                         </CardContent>
-                        <CardActions>
-                            <Button className="Signin" size="small" color="primary">
+                        <CardActions className="card-action right-align">
+                            <Button className="Signin" size="medium" color="primary" align="right">
                                 Sign Up
                             </Button>
                         </CardActions>
