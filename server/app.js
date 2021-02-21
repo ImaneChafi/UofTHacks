@@ -6,7 +6,7 @@ const mongoose = require("mongoose"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose"),
   User = require("./models/user");
-  Messages = require("./models/posts");
+Messages = require("./models/posts");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const bodyParser = require("body-parser"); // middleware
@@ -39,7 +39,7 @@ MongoClient.connect(
     if (err) return console.log(err);
     db = client.db("test"); // whatever your database name is
     app.listen(5000, () => {
-      console.log("listening on 3000");
+      //console.log("listening on 3000");
     });
   }
 );
@@ -73,11 +73,24 @@ app.get("/", (req, res) => {
 
 //POST List posts on school page
 app.get("/school", (req, res) => {
-  db.collection('posts').find().toArray()
-  .then(results => {
-    res.render('userprofile.ejs', { quotes: results })
-  })
-  .catch(/* ... */)
+  db.collection("posts")
+    .find()
+    .toArray()
+    .then((results) => {
+      res.render("userprofile.ejs", { quotes: results });
+    })
+    .catch(/* ... */);
+});
+
+app.get("/school", (req, res) => {
+  db.collection("users")
+    .find()
+    .toArray()
+    .then((results) => {
+      console.log(req.user);
+      res.render("userprofile.ejs", { users: results });
+    })
+    .catch(/* ... */);
 });
 
 //GET games
@@ -87,29 +100,35 @@ app.get("/games", (req, res) => {
 
 //GET classes
 app.get("/classes", (req, res) => {
-  db.collection('class').find().toArray()
-  .then(results => {
-    res.render('userprofile.ejs', { classes: results })
-  })
-  .catch(/* ... */)
+  db.collection("class")
+    .find()
+    .toArray()
+    .then((results) => {
+      res.render("userprofile.ejs", { classes: results });
+    })
+    .catch(/* ... */);
 });
 
 //GET threads
 app.get("/threads", (req, res) => {
-  db.collection('thread').find().toArray()
-  .then(results => {
-    res.render('userprofile.ejs', { threads: results })
-  })
-  .catch(/* ... */)
+  db.collection("thread")
+    .find()
+    .toArray()
+    .then((results) => {
+      res.render("userprofile.ejs", { threads: results });
+    })
+    .catch(/* ... */);
 });
 
 //GET Check if user logged in and list posts as quotes
 app.get("/userprofile", isLoggedIn, (req, res) => {
-  db.collection('quotes').find().toArray()
-  .then(results => {
-    res.render('userprofile.ejs', { posts: results })
-  })
-  .catch(/* ... */)
+  db.collection("thread")
+    .find()
+    .toArray()
+    .then((results) => {
+      res.render("userprofile.ejs", { quotes: results });
+    })
+    .catch(/* ... */);
 });
 
 //GET research
@@ -122,45 +141,36 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
-
 //GET login
 app.get("/post", (req, res) => {
-  db.collection('posts').find().toArray()
-  .then(results => {
-    res.json(results)
-  })
-  .catch(/* ... */)
-}); 
-
+  db.collection("posts")
+    .find()
+    .toArray()
+    .then((results) => {
+      res.render("userprofile.ejs", { quotes: results });
+    })
+    .catch(/* ... */);
+});
 
 //POST posts
-app.post('/post', function(req, res) {
-  db.collection('posts').insertOne(req.body, (err, result) => {
-      if (err) return console.log(err)
-  
-      console.log('saved to database')
-      res.json(req.body)
-      
-    })
-})
+app.post("/post", function (req, res) {
+  db.collection("posts").insertOne(req.body, (err, result) => {
+    if (err) return console.log(err);
+
+    console.log("saved to database");
+    res.redirect("/school");
+  });
+});
 
 //POST thread
-app.post('/thread', function(req, res) {
-  db.collection('thread').insertOne(req.body, (err, result) => {
-      if (err) return console.log(err)
-  
-      console.log('saved thread to database')
-      res.redirect('/userprofile')
-      
-    })
-})
+app.post("/thread", function (req, res) {
+  db.collection("thread").insertOne(req.body, (err, result) => {
+    if (err) return console.log(err);
 
-//GET getting the posts test
-app.get('/', (req, res) => {
-  const cursor = db.collection('posts').find()
-  console.log(cursor)
-  // ...
-})
+    console.log("saved thread to database");
+    res.redirect("/school");
+  });
+});
 
 //GET register
 app.get("/register", (req, res) => {
@@ -199,6 +209,15 @@ function isLoggedIn(req, res, next) {
   }
   res.redirect("/login");
 }
+
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/userprofile",
+    failureRedirect: "/login",
+  }),
+  function (req, res) {}
+);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

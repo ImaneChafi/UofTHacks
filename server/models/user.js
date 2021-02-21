@@ -7,7 +7,6 @@ const UserSchema = new mongoose.Schema({
     lname:String, 
     Image: String,
     School: Number, 
-    Courses: Number, 
     Friends: [{
         type: String
     }], 

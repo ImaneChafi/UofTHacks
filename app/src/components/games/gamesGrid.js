@@ -61,60 +61,68 @@ function GamesGrid() {
 
                 </Grid>
                 <Grid item xs={6}>
+                <a href="https://codenames.game/">
                     <Card >
                         <CardActionArea className={classes.tile}>
                             <CardContent className="Groupdescription">
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Game Title
+                                    CodeNames
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Game Description
+                                    Connect with friends!
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                     </Card>
+                    </a>
                 </Grid>
                 <Grid item xs={6}>
+                <a href="https://www.ea.com/games/library/online">
                     <Card >
                         <CardActionArea className={classes.tile}>
                             <CardContent className="Groupdescription">
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Game Title
+                                    EA Games
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Game Description
+                                   Online Video Games
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                     </Card>
+                    </a>
                 </Grid>
                 <Grid item xs={6}>
+                <a href="https://www.chess.com/play/computer">
                     <Card >
                         <CardActionArea className={classes.tile}>
                             <CardContent className="Groupdescription">
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Game Title
+                                    Chess Online
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Game Description
+                                    PLay against friends or a computer!
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                     </Card>
+                    </a>
                 </Grid>
                 <Grid item xs={6}>
+                <a href='https://chrome.google.com/webstore/detail/uno-online/fpbnpljegegohllohhgcmgjbcijfcfld?hl=en'>
                     <Card >
                         <CardActionArea className={classes.tile}>
                             <CardContent className="Groupdescription">
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Game Title
+                                   Uno Online
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Game Description
+                                    Ruins Friendships :)
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                     </Card>
+                    </a>
                 </Grid>
                 <Grid item xs={6}>
                     <Card >

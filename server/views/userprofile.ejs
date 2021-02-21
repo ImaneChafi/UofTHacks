@@ -1,6 +1,5 @@
 <style>
 
-
 :root {
   --bc: #0c0c0d;
   --bc-gray: #0e0d10;
@@ -48,6 +47,12 @@
 * {
 	box-sizing: border-box;
 }
+form {
+      width: 100%;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 5px #ccc; 
+      }
 html, body {
 	margin: 0;
   width: 100%;
@@ -313,6 +318,15 @@ footer {
   position: absolute;
   background-color: rgba(0, 0, 0, .5);
   z-index: 10;
+}
+.woot {
+  width: calc(50%);
+  padding: 5px
+}
+.wooy{
+  height: calc(300%);
+  width: calc(75%);
+  padding: 5px;
 }
 /* Main */
 #main {
@@ -666,6 +680,15 @@ footer {
   color: var(--primary);
   border-bottom: 1px solid var(--primary);
 }
+input, select, textarea {
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      }
 /* Selection */
 ::selection {
   color: var(--white);
@@ -897,41 +920,12 @@ Enjoy <3
 
     <ul class="Posts">
     <!-- Loop through quotes -->
-    <% for(var i = 0; i < quotes.length; i++) {%>
-      <li class="post">
-        <span>User id <%= quotes[i]._id %></span><br>
-        <!-- Output name from the iterated quote object -->
-        <span >Message: <%= quotes[i].message %></span>:
-        <!-- Output quote from the iterated quote object -->
-        <br><br>
-      </li>
-    <% } %>
-    </ul>
-        </ul>
-      </div>
+    <% for(var i = quotes.length-1; i >-1; i--) {%>
       <div class="post-blocks">
-          <div class="post-block">
-              <div class="post-top-bar">
-                <form method="post" action="/post">
-                  <div class='fieldset-body' id='login_form' >
-                    <button onclick="openLoginInfo();" class='b b-form i i-more' title='Info'></button>
-                    <p class='field'>
-                      <label for='user'>Message</label>
-                      <input type='text' id='user' name='message' title='Username' />
-                      <span id='valida' class='i i-warning'></span>
-                    <p class='field' hidden>
-                      <input type='text' id='user' name='username' title='Username' />
-                      <span id='valida' class='i i-warning'></span>
-                    </p>
-                    
-                    <label class='checkbox'>
-                      <input type='checkbox' name="isAnonymous" value='TRUE' title='Keep me Signed in' /> Anonymous?
-                    </label>
-            
-                    <input type='submit' id='do_login' value='POST!' title='Get Started' />
-                 </form>
-              <p class="post-title">
-                  Posted by <a class="title-dev" href="#">dlirA01</a>
+        <div class="post-block">
+          <div class="post-top-bar">
+            <p class="post-title">
+                  Posted by <a class="title-dev" href="#"><%=quotes[i]._id%></a> <!--should be the user id -->
                   <svg class="titleuname-verified" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350.03 1326.16">
                       <defs><style>.cls-11{fill:var(--primary);}.cls-12{fill:#ffffff;}</style></defs><title>verified</title>
                       <g id="Layer_3" data-name="Layer 3">
@@ -940,15 +934,11 @@ Enjoy <3
                           <path class="cls-12" d="M755.33,979.23s125.85,78.43,165.06,114c34.93-36,234.37-277.22,308.24-331.94,54.71,21.89,85,73.4,93,80.25-3.64,21.89-321.91,418.58-368.42,445.94-32.74-3.84-259-195.16-275.4-217C689.67,1049.45,725.24,1003.85,755.33,979.23Z" transform="translate(-322.83 -335.95)"/></g>
                   </svg>
               </p>
-              <p class="post-date">24.04.20</p>
           </div>
-              <a class="post-img-wrapper" href="#"><img class="post-img" src="https://i.imgur.com/NPGXUJI.jpg" alt=""></a>
+          </div>
               <div class="post-container">
-                  <h2 class="post-sec-title">This is a post title</h2>
-                  <p class="post-sec-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <h2 class="post-sec-title"><%=quotes[i].title%></h2>
+                  <p class="post-sec-text"><%=quotes[i].message%></p>
                   <div class="post-bottom-line">
                       <div class="post-b-left">
                           <a><i class="uil uil-thumbs-up"></i> 19</a>
@@ -960,22 +950,37 @@ Enjoy <3
                   </div>
               </div>
           </div>
+        </div>
+      </div>
+    <% } %>
+    </ul>
+        </ul>
+      </div>
+      <div class="post-blocks">
           <div class="post-block">
               <div class="post-top-bar">
-                  <p class="post-title">
-                      Posted by <a class="title-dev" href="">dlirA01</a>
-                      <svg class="titleuname-verified" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350.03 1326.16">
-                          <defs><style>.cls-11{fill:var(--primary);}.cls-12{fill:#ffffff;}</style></defs><title>verified</title>
-                          <g id="Layer_3" data-name="Layer 3">
-                              <polygon class="cls-11" points="0 747.37 120.83 569.85 70.11 355.04 283.43 292.38 307.3 107.41 554.93 107.41 693.66 0 862.23 120.83 1072.57 126.8 1112.84 319.23 1293.35 399.79 1256.05 614.6 1350.03 793.61 1197.87 941.29 1202.35 1147.15 969.64 1178.48 868.2 1326.16 675.02 1235.17 493.77 1315.72 354.99 1133.73 165.58 1123.29 152.16 878.64 0 747.37"/></g>
-                          <g id="Layer_2" data-name="Layer 2">
-                              <path class="cls-12" d="M755.33,979.23s125.85,78.43,165.06,114c34.93-36,234.37-277.22,308.24-331.94,54.71,21.89,85,73.4,93,80.25-3.64,21.89-321.91,418.58-368.42,445.94-32.74-3.84-259-195.16-275.4-217C689.67,1049.45,725.24,1003.85,755.33,979.23Z" transform="translate(-322.83 -335.95)"/></g>
-                      </svg>
-                  </p>
-                  <p class="post-date">20.04.20</p>
-              </div>
-              <img class="post-img" src="https://i.imgur.com/EK0bkOn.jpg" alt="">
-          </div>
+                <form method="post" action="/post">
+                  <h2 class="post-sec-title">Create a post</h2>
+                  <div class='fieldset-body' id='login_form' >
+                    <button onclick="openLoginInfo();" class='b b-form i i-more' title='Info'></button>
+                    <p class='field'>
+                      <label for='user'>Title</label>
+                      <input type='text' id='user' name='title' title='Title' class="woot"/>
+                      <span id='valida' class='i i-warning'></span>
+                    <p class='field' hidden>
+                    <p class='field'>
+                        <label for='user'>Message</label>
+                        <textarea id='user' name='message' title='Quote' rows="3" style="width: calc(100%);"></textarea>
+                        <span id='valida' class='i i-warning'></span>
+                    </p>
+                    <p>
+                      <input type='checkbox' name="isAnonymous" value='TRUE' title='Keep me Signed in' /> Anonymous?
+                    </p>
+                
+            
+                    <input type='submit' id='do_login' value='POST!' title='Get Started' />
+                 </form>
+              </p>   
       </div>
       <div class="space"></div>
   </div>
