@@ -39,7 +39,7 @@ MongoClient.connect(
     if (err) return console.log(err);
     db = client.db("test"); // whatever your database name is
     app.listen(5000, () => {
-      console.log("listening on 3000");
+      //console.log("listening on 3000");
     });
   }
 );
@@ -217,5 +217,5 @@ app.use(function (err, req, res, next) {
 });
 app.set("view engine", "ejs");
 
-const port = process.env.PORT || 3030;
+const port = process.env.PORT || 5000;
 app.listen(port);
