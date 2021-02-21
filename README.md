@@ -1,4 +1,4 @@
-# UofTHacks
+# UofTHacks 
 
 ## Theme: Connectivity 
 
@@ -13,6 +13,8 @@ You can run this command `node app.js` under the folder `APIServer` and the serv
 ### `npm start`
 
 You can run this command `npm start` under the folder `app` and the client of the application will automatically start on your browser.
+
+### [Devpost Story](https://devpost.com/software/connex-the-community-for-students-by-students)
 
 ### Ideas: 
 1. Support and connect students together (Website) 
@@ -53,7 +55,7 @@ Node.js, React, MongoDB
 4. Kyoji Goto: React 
 5. https://www.figma.com/ 
 6. Heroku: https://www.heroku.com/
-7. https://www.figma.com/file/HE6YnixngH06XatNOBXg2q/Pegasus-Design-System-(Community)?node-id=3%3A4965
+7. UI Mockup: https://www.figma.com/file/HE6YnixngH06XatNOBXg2q/Pegasus-Design-System-(Community)?node-id=3%3A4965
 
 
 
