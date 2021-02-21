@@ -46,6 +46,11 @@ const useStyles = makeStyles((theme) => ({
         left: "50%",
         marginRight: "-50%",
         transform: "translate(-50%, -50%)"
+    },
+    wrapper: {
+        backgroundColor: "#3f51b5",
+        height:"100vh",
+        width:"100vw"
     }
   }));
 
@@ -67,7 +72,7 @@ function Login(props) {
     const [registerSchool, setRegisterSchool] = useState("");
 
     return (
-        <div className="Wrapper">
+        <div className={classes.wrapper}>
             <Card className={classes.loginCard}>
                 <Tabs value={value} onChange={(e, newValue) => setValue(newValue)} aria-label="simple tabs example" centered>
                         <Tab label="Log In" />
@@ -99,7 +104,6 @@ function Login(props) {
                                 // onKeyPress={() => handleLogin(email, password, props.setUser, props.setLogin)}
                             />
                             <Typography variant="body2" component="p">
-                                {/* {this.state.signin_error} */}
                             </Typography>
                         </CardContent>
                         <CardActions>
@@ -177,9 +181,6 @@ function Login(props) {
                                 onChange={(e) => setRegisterPasswordConfirm(e.target.value)}
                                 // onKeyPress={this.handleEnterSignup}
                             />
-                            <p>
-                                {/* {this.state.signup_error ? this.state.signup_error : this.state.signup_success} */}
-                            </p>
                         </CardContent>
                         <CardActions className="card-action right-align">
                             <Button className="Signin" size="medium" color="primary" align="right">
