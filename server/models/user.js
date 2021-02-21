@@ -8,7 +8,9 @@ const UserSchema = new mongoose.Schema({
     Image: String,
     School: Number, 
     Courses: Number, 
-    Friends: String, 
+    Friends: [{
+        type: String
+    }], 
     is_prof: Boolean,
 }) ;
 UserSchema.plugin(passportLocalMongoose);

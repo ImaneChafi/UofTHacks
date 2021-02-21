@@ -6,7 +6,7 @@ const mongoose = require("mongoose"),
   LocalStrategy = require("passport-local"),
   passportLocalMongoose = require("passport-local-mongoose"),
   User = require("./models/user");
-  Messages = require("./models/quotes");
+  Messages = require("./models/posts");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const bodyParser = require("body-parser"); // middleware
@@ -65,19 +65,45 @@ app.use(passport.session());
 //=======================
 //      R O U T E S
 //=======================
+
+//GET login as main page
 app.get("/", (req, res) => {
   res.render("login");
 });
+
+//POST List posts on school page
 app.get("/school", (req, res) => {
-  db.collection('quotes').find().toArray()
+  db.collection('posts').find().toArray()
   .then(results => {
     res.render('userprofile.ejs', { quotes: results })
   })
   .catch(/* ... */)
 });
+
+//GET games
 app.get("/games", (req, res) => {
   res.render("games");
 });
+
+//GET classes
+app.get("/classes", (req, res) => {
+  db.collection('class').find().toArray()
+  .then(results => {
+    res.render('userprofile.ejs', { classes: results })
+  })
+  .catch(/* ... */)
+});
+
+//GET threads
+app.get("/threads", (req, res) => {
+  db.collection('thread').find().toArray()
+  .then(results => {
+    res.render('userprofile.ejs', { threads: results })
+  })
+  .catch(/* ... */)
+});
+
+//GET Check if user logged in and list posts as quotes
 app.get("/userprofile", isLoggedIn, (req, res) => {
   db.collection('quotes').find().toArray()
   .then(results => {
@@ -85,26 +111,20 @@ app.get("/userprofile", isLoggedIn, (req, res) => {
   })
   .catch(/* ... */)
 });
+
+//GET research
 app.get("/research", (req, res) => {
   res.render("research");
 });
 
-//Auth Routes
+//GET login
 app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/userprofile",
-    failureRedirect: "/login",
-  }),
-  function (req, res) {}
-);
-
-app.post('/message', function(req, res) {
-  db.collection('quotes').insertOne(req.body, (err, result) => {
+//POST posts
+app.post('/post', function(req, res) {
+  db.collection('posts').insertOne(req.body, (err, result) => {
       if (err) return console.log(err)
   
       console.log('saved to database')
@@ -113,15 +133,30 @@ app.post('/message', function(req, res) {
     })
 })
 
+//POST thread
+app.post('/thread', function(req, res) {
+  db.collection('thread').insertOne(req.body, (err, result) => {
+      if (err) return console.log(err)
+  
+      console.log('saved thread to database')
+      res.redirect('/userprofile')
+      
+    })
+})
+
+//GET getting the posts test
 app.get('/', (req, res) => {
-  const cursor = db.collection('quotes').find()
+  const cursor = db.collection('posts').find()
   console.log(cursor)
   // ...
 })
 
+//GET register
 app.get("/register", (req, res) => {
   res.render("register");
 });
+
+//POST register
 app.post("/register", (req, res) => {
   User.register(
     new User({
@@ -141,6 +176,8 @@ app.post("/register", (req, res) => {
     }
   );
 });
+
+//GET logout
 app.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
