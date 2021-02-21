@@ -1,39 +1,54 @@
 import React, { useState } from 'react'
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { List, ListItem, ListItemIcon, ListItemText, Avatar } from '@material-ui/core'
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import SettingsIcon from '@material-ui/icons/Settings'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import Navigation from '../navigation/navigation.js'
 
-function sideBarComponent() {
+function SideBarComponent(props) {
   return (
     <>
-      <AccountCircle/> 
+      <Avatar alt={props.user.name} src="/static/images/avatar/1.jpg" style={{margin: "auto", "margin-top": "10px", height: "100px", width: "100px"}}/>
       <List>
-          {['General', 'Settings', 'Log Out'].map((text, index) => (
-          <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <ExitToAppIcon /> : <SettingsIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+          <ListItem button key={'Settings'}>
+              <ListItemIcon>
+                <SettingsIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Settings'} />
           </ListItem>
-          ))}
+          <ListItem button key={'Log Out'}>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary={'Log Out'} />
+          </ListItem>
+
       </List>
     </>
   )
 }
 
-function mainComponent() {
+function MainComponent(props) {
+
   return (
     <p>This is for the profile stuff</p>
   )
 }
 
-
-function Profile() {
+function Profile(props) {
     return (
         <div className="wrapper">
           <Navigation
-            sideBarComponent={sideBarComponent()}
-            mainComponent={mainComponent()}
+            sideBarComponent={
+            <SideBarComponent
+              user={props.user}
+            />}
+            mainComponent={
+            <MainComponent
+
+            />}
+
           />
         </div>
     )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { AppBar, Toolbar, Drawer, CssBaseline, IconButton, Typography, Button} from '@material-ui/core'
+import { AppBar, Toolbar, Drawer, CssBaseline, IconButton, Typography, Button, Menu, MenuItem} from '@material-ui/core'
+
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -98,6 +99,7 @@ const useStyles = makeStyles((theme) => ({
 const Navigation = ({ sideBarComponent, mainComponent }) => {
     const history = useHistory();
     const classes = useStyles();
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
     return (
         <div className="wrapper">
@@ -140,10 +142,24 @@ const Navigation = ({ sideBarComponent, mainComponent }) => {
                     aria-controls={"primary-search-account-menu"}
                     aria-haspopup="true"
                     color="inherit"
-                    onClick={() => history.push("/profile")}
+
+                    onClick={(e) => setAnchorEl(e.target)}
                     >
                     <AccountCircle />
                     </IconButton>
+                    <Menu
+                        anchorEl={anchorEl}
+                        keepMounted
+                        transformOrigin={{
+                            vertical: 'bottom',
+                            horizontal: 'right',
+                        }}
+                        open={Boolean(anchorEl)}
+                        onClose={() => setAnchorEl(null)}
+                        className="LogOutMenu"
+                    >
+                        <MenuItem className="Log Out" onClick={() => console.log("Logging out")}>Log Out</MenuItem>
+                    </Menu>
                 </div>
                 </Toolbar>
             </AppBar>

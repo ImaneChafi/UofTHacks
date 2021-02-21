@@ -27,6 +27,7 @@ function GamesGrid() {
             >
                 <Grid item xs={6}>
                 <a href="https://skribbl.io/">
+
                     <Card >
                         <CardActionArea className={classes.tile}>
                             <CardContent className="Groupdescription">
@@ -55,7 +56,9 @@ function GamesGrid() {
                             </CardContent>
                         </CardActionArea>
                     </Card>
+
                     </a>
+
                 </Grid>
                 <Grid item xs={6}>
                     <Card >
