@@ -122,6 +122,17 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+
+//GET login
+app.get("/post", (req, res) => {
+  db.collection('posts').find().toArray()
+  .then(results => {
+    res.json(results)
+  })
+  .catch(/* ... */)
+}); 
+
+
 //POST posts
 app.post('/post', function(req, res) {
   db.collection('posts').insertOne(req.body, (err, result) => {
