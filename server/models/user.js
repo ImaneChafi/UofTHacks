@@ -4,7 +4,12 @@ const UserSchema = new mongoose.Schema({
     username:String,
     password:String,
     fname:String,
-    lname:String
+    lname:String, 
+    Image: String,
+    School: Number, 
+    Courses: Number, 
+    Friends: String, 
+    is_prof: Boolean,
 }) ;
 UserSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model("User",UserSchema);

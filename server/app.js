@@ -66,7 +66,7 @@ app.use(passport.session());
 //      R O U T E S
 //=======================
 app.get("/", (req, res) => {
-  res.render("home");
+  res.render("login");
 });
 app.get("/school", (req, res) => {
   db.collection('quotes').find().toArray()
