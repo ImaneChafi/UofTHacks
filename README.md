@@ -37,9 +37,11 @@ Node.js, React, MongoDB
 ## Separation of tasks 
 1. Paul Hinta: Backend 
 2. UI Mockup: Everyone
-3. https://www.figma.com/ 
-4. Heroku: https://www.heroku.com/
-5. https://www.figma.com/file/SIWh2gNdBxigIWNlFRMGPZ/Matoa-Website-Redesign-Community?node-id=0%3A1 
+3. Imane Chafi: Schema and integration
+4. Kyoji Goto: React 
+5. https://www.figma.com/ 
+6. Heroku: https://www.heroku.com/
+7. https://www.figma.com/file/SIWh2gNdBxigIWNlFRMGPZ/Matoa-Website-Redesign-Community?node-id=0%3A1 
 
 
 
