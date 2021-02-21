@@ -35,6 +35,7 @@ function App() {
           <Route exact path='/feed' render={() => <Opportunities user={student}/>} />
           <Route exact path='/games' render={() => <Games user={student}/>} />
           <Route exact path='/profile' render={() => <Profile user={student}/>} />
+
         </Switch>
       </BrowserRouter>
     </div>

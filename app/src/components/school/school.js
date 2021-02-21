@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import Navigation from '../navigation/navigation.js'
 import Thread from '../thread/thread.js'
+import axios from 'axios';
 
 function SideBarComponent(props) {
   return (
@@ -33,7 +34,7 @@ function MainComponent(props) {
 function School(props) {
     const [thread, setThread] = useState("")
     const messages = [{text: "Hey", name: "Kyoji", created_at: "09:30"}, {text: "hi", name: "Paul", created_at: "09:31"}, {text: "what's up guys", name: "Imane", created_at: "09:32"}, {text: "nm hbu", name: "Paul", created_at: "09:31"}]
-
+   
     return (
         <div className="wrapper">
           <Navigation

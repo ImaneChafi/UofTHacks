@@ -128,7 +128,7 @@ app.post('/post', function(req, res) {
       if (err) return console.log(err)
   
       console.log('saved to database')
-      res.redirect('/userprofile')
+      res.json(req.body)
       
     })
 })

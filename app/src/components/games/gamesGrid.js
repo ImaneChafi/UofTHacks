@@ -26,32 +26,36 @@ function GamesGrid() {
                 id="Groupgrid"
             >
                 <Grid item xs={6}>
+                <a href="https://skribbl.io/">
                     <Card >
                         <CardActionArea className={classes.tile}>
                             <CardContent className="Groupdescription">
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Game Title
+                                 Skribbl.io!
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Game Description
+                                    Draw n Guess!
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                     </Card>
+                    </a>
                 </Grid>
                 <Grid item xs={6}>
+                <a href="https://www.enchambered.com/puzzles/">
                     <Card >
                         <CardActionArea className={classes.tile}>
                             <CardContent className="Groupdescription">
                                 <Typography gutterBottom variant="h5" component="h2">
-                                    Game Title
+                                    Escape Games!
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" component="p">
-                                    Game Description
+                                    Find Clues to win!
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
                     </Card>
+                    </a>
                 </Grid>
                 <Grid item xs={6}>
                     <Card >
