@@ -41,7 +41,7 @@ Node.js, React, MongoDB
 4. Kyoji Goto: React 
 5. https://www.figma.com/ 
 6. Heroku: https://www.heroku.com/
-7. https://www.figma.com/file/SIWh2gNdBxigIWNlFRMGPZ/Matoa-Website-Redesign-Community?node-id=0%3A1 
+7. https://www.figma.com/file/HE6YnixngH06XatNOBXg2q/Pegasus-Design-System-(Community)?node-id=3%3A4965
 
 
 
