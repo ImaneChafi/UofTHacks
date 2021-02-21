@@ -105,7 +105,11 @@ app.get("/threads", (req, res) => {
 
 //GET Check if user logged in and list posts as quotes
 app.get("/userprofile", isLoggedIn, (req, res) => {
-  res.render("userprofile");
+  db.collection('thread').find().toArray()
+  .then(results => {
+    res.render('userprofile.ejs', { quotes: results })
+  })
+  .catch(/* ... */)
 });
 
 //GET research
@@ -124,7 +128,7 @@ app.get("/login", (req, res) => {
 app.get("/post", (req, res) => {
   db.collection('posts').find().toArray()
   .then(results => {
-    res.json(results)
+    res.render('userprofile.ejs', { quotes: results })
   })
   .catch(/* ... */)
 }); 
@@ -136,8 +140,7 @@ app.post('/post', function(req, res) {
       if (err) return console.log(err)
   
       console.log('saved to database')
-      res.json(req.body)
-      
+      res.redirect('/school')
     })
 })
 
@@ -147,7 +150,7 @@ app.post('/thread', function(req, res) {
       if (err) return console.log(err)
   
       console.log('saved thread to database')
-      res.redirect('/userprofile')
+      res.redirect('/school')
       
     })
 })

@@ -897,6 +897,15 @@ Enjoy <3
 
     <ul class="Posts">
     <!-- Loop through quotes -->
+    <% for(var i = 0; i < quotes.length; i++) {%>
+      <li class="post">
+        <span>User id <%= quotes[i]._id %></span><br>
+        <!-- Output name from the iterated quote object -->
+        <span >Message: <%= quotes[i].message %></span>:
+        <!-- Output quote from the iterated quote object -->
+        <br><br>
+      </li>
+    <% } %>
     </ul>
         </ul>
       </div>
