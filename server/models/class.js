@@ -10,4 +10,4 @@ const ClassSchema = new mongoose.Schema({
         type: String
     }],
 }) ;
-module.exports = mongoose.model("classes",ClassSchema);
+module.exports = mongoose.model("classes", ClassSchema);

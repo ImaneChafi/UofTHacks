@@ -107,7 +107,7 @@ app.get("/threads", (req, res) => {
 app.get("/userprofile", isLoggedIn, (req, res) => {
   db.collection('quotes').find().toArray()
   .then(results => {
-    res.render('userprofile.ejs', { quotes: results })
+    res.render('userprofile.ejs', { posts: results })
   })
   .catch(/* ... */)
 });
