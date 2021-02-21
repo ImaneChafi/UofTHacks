@@ -1,4 +1,5 @@
-# UofTHacks 
+# Connexa: The community for students, by students
+### During the covid pandemic, students have been struggling to find a way to keep their involvement at school and morale has been at an all time low. We set out to create a web platform to solve this.
 
 ## Theme: Connectivity 
 
