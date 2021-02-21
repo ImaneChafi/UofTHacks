@@ -2,6 +2,18 @@
 
 ## Theme: Connectivity 
 
+## To Run
+
+### Server-side
+### `node app.js`
+
+You can run this command `node app.js` under the folder APIServer and the server of the application will start.
+
+### Client-side
+### `npm start`
+
+You can run this command `npm start` under the folder app and the client of the application will automatically start on your browser.
+
 ### Ideas: 
 1. Support and connect students together (Website) 
   2. Target are schools 
